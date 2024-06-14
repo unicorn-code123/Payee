@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Payee</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 430px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            color: #555;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="checkbox"] {
+            margin-top: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: 20px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .error {
+            color: red;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+<div class="form-container">
+    <h2>Add New Beneficiary</h2>
+
+    <div th:if="${error}">
+        <p th:text="${error}" class="error"></p>
+    </div>
+
+    <form th:action="@{/api/addPayee}" method="post">
+        <label for="name">Beneficiary Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="accountNumber">Beneficiary Account Number:</label>
+        <input type="text" id="accountNumber" name="accountNumber" pattern="\d{12}" required title="Account number must be 12 digits">
+
+        <label for="reEnteredAccountNumber">Re-Enter Account Number:</label>
+        <input type="text" id="reEnteredAccountNumber" name="reEnteredAccountNumber" pattern="\d{12}" required title="Account number must be 12 digits">
+
+
+        <label for="nickname">Nickname:</label>
+        <input type="text" id="nickname" name="nickname">
+
+        <input type="checkbox" id="confirmCheckbox" name="confirmCheckbox">
+        <label for="confirmCheckbox">Save Beneficiary</label>
+
+        <input type="submit" value="Save as Beneficiary">
+    </form>
+</div>
+</body>
+</html>
+

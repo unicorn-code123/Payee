@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Congratulations</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(178, 212, 241);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            width: 50%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin: 50px 30px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-around;
+            background-color: rgb(225, 235, 234);
+            margin-top: 7px;
+            box-shadow: 0px 2px 10px rgba(244, 197, 197, 0.1);
+            border-radius: 5px;
+        }
+
+        button,
+        .button-link {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .button-link:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>IMPS TRANSFER SUCCESSFUL</h2>
+    <h4 style="text-align: center;color: green;" th:text="${message}"></h4>
+
+    <div class="row">
+        <p>Paid To Account: </p>
+        <p th:text="'xxxxxxxx' + ${#strings.substring(impsDetails.To_Account, 9, 12)}"></p>
+    </div>
+    <div class="row">
+        <p>Amount: </p>
+        <p th:text="${impsDetails.Amount}"></p>
+    </div>
+    <div class="row">
+        <p>From Account: </p>
+        <p th:text="'xxxxxxxx' + ${#strings.substring(impsDetails.From_Account, 9, 12)}"></p>
+    </div>
+    <div class="row">
+        <p>Date: </p>
+        <p th:text="${impsDetails.Date}"></p>
+    </div>
+    <div class="row">
+        <p>Instruction: </p>
+        <p th:text="${impsDetails.Instruction}"></p>
+    </div>
+    <div class="row">
+        <p>Remark: </p>
+        <p th:text="${impsDetails.Remark}"></p>
+    </div>
+
+    <div>
+        <a href="/fundImps" class="button-link">Make Another Transfer</a>
+    </div>
+</div>
+</body>
+</html>
