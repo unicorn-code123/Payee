@@ -32,6 +32,7 @@ public class rtgsController {
             model.addAttribute("error", "An error occurred while processing the transfer.");
             return "error"; // Redirect to error page
         }
+
     }
 
     @GetMapping("/rtgstransfer")
@@ -43,6 +44,7 @@ public class rtgsController {
         }
         model.addAttribute("rtgsDetails", details);
         model.addAttribute("message", "Transfer Amount successfully");
+        model.addAttribute("redirectUrl", "/api/success"); // Add redirect URL to model
         return "rtgstransfer"; // Assuming this is your success page (success.html)
     }
 }
