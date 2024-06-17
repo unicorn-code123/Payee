@@ -47,6 +47,14 @@
             background-color: #0056b3;
         }
     </style>
+    <script>
+        // Redirect to the specified URL after 5 seconds
+        window.onload = function() {
+            setTimeout(function() {
+                window.location.href = /*[[${redirectUrl}]]*/ '/api/success';
+            }, 10000);
+        };
+    </script>
 </head>
 <body>
 <div class="mainContainer">
@@ -65,6 +73,9 @@
         <div>
             <a href="/fundNeft">Make Another Transfer</a>
         </div>
+        </ul>
+        <p>You will be redirected to the success page shortly.
+        </p>
     </div>
 </div>
 </body>

@@ -42,6 +42,7 @@ public class neftController {
         }
         model.addAttribute("neftDetails", details);
         model.addAttribute("message", "Transfer Amount successfully");
+        model.addAttribute("redirectUrl", "/api/success"); // Add redirect URL to model
         return "nefttransfer"; // Assuming this is your success page (nefttransfer.html)
     }
 }

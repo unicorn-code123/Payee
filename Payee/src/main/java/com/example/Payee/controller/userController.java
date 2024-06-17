@@ -38,6 +38,7 @@ public class userController {
         }
         model.addAttribute("impsDetails", details);
         model.addAttribute("message", "Transfer Amount successfully");
+        model.addAttribute("redirectUrl", "/api/success"); // Add redirect URL to model
         return "imtrans"; // Assuming this is your success page (success.html)
     }
 }
